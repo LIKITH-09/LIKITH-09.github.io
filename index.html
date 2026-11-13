@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Likith Goshike | Data Science and Machine Learning</title>
+<meta name="description" content="Portfolio of Likith Goshike: data science master's student at the University of Maryland. Machine learning, NLP, LLM apps and analytics dashboards.">
+<script>
+(function(){var t;try{t=localStorage.getItem('theme')}catch(e){}
+if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
+document.documentElement.setAttribute('data-theme',t)})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --plane:#f1f4f8; --surface:#fcfcfb; --ink:#0f1b2d; --ink2:#4a5568; --muted:#6f7888;
+  --line:#dde3ea; --grid:#e6eaf0; --accent:#2a78d6; --accent-ink:#1c5cab; --chip-on:#1c5cab;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; --s4:#eda100; --s5:#e87ba4;
+  --hero:#0d2240; --bar:rgba(241,244,248,.88);
+}
+[data-theme="dark"]{
+  --plane:#0b0f16; --surface:#141a23; --ink:#eef1f5; --ink2:#b4bcc8; --muted:#8b93a1;
+  --line:#242c38; --grid:#1f2631; --accent:#3987e5; --accent-ink:#7db4f2; --chip-on:#1c5cab;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70; --s4:#c98500; --s5:#d55181;
+  --hero:#08111f; --bar:rgba(11,15,22,.88);
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:110px}
+body{margin:0;background:var(--plane);color:var(--ink);font:400 16px/1.6 Figtree,system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;margin:0;line-height:1.1;letter-spacing:-.02em}
+a{color:var(--accent-ink)}
+p{margin:0}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:4px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--surface);padding:8px 12px;border-radius:6px;z-index:200}
+.skip:focus{left:8px}
+
+/* header */
+.top{position:sticky;top:0;z-index:50;background:var(--bar);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:20px;height:56px}
+.brand{font:700 1.05rem "Bricolage Grotesque",system-ui,sans-serif;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:10px;white-space:nowrap}
+.brand i{display:grid;place-items:center;width:28px;height:28px;border-radius:7px;background:var(--hero);color:#fff;font-style:normal;font-size:.8rem}
+.nav{display:flex;gap:4px;overflow-x:auto;margin-left:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav a{color:var(--ink2);text-decoration:none;font-size:.9rem;font-weight:500;padding:6px 11px;border-radius:99px;white-space:nowrap}
+.nav a:hover{color:var(--ink)}
+.nav a.on{background:var(--ink);color:var(--plane)}
+.icon-btn{flex:none;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer;display:grid;place-items:center}
+.icon-btn:hover{border-color:var(--accent)}
+.icon-btn svg{width:17px;height:17px}
+[data-theme="dark"] .i-moon,[data-theme="light"] .i-sun{display:none}
+
+.filterbar{position:sticky;top:56px;z-index:40;background:var(--accent-ink);color:#fff}
+[data-theme="dark"] .filterbar{background:#1c5cab}
+.filterbar .wrap{display:flex;align-items:center;gap:14px;min-height:42px;padding-top:6px;padding-bottom:6px;font-size:.92rem}
+.filterbar button{margin-left:auto;background:#fff;color:#0d2240;border:0;border-radius:99px;padding:5px 14px;font:600 .85rem Figtree,system-ui,sans-serif;cursor:pointer;white-space:nowrap}
+
+/* hero */
+.hero{background:var(--hero);color:#fff;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.07) 1px,transparent 1px);background-size:48px 48px;-webkit-mask-image:linear-gradient(180deg,#000 20%,transparent 95%);mask-image:linear-gradient(180deg,#000 20%,transparent 95%)}
+.hero .wrap{position:relative;padding-top:84px;padding-bottom:52px}
+.hero h1{font-size:clamp(3rem,9vw,6.2rem);font-weight:700;letter-spacing:-.035em;line-height:.95}
+.hero .role{margin-top:18px;font-size:1.05rem;color:rgba(255,255,255,.7)}
+.hero .lead{margin-top:14px;font-size:clamp(1.1rem,2.2vw,1.35rem);line-height:1.5;max-width:34em;color:rgba(255,255,255,.92)}
+.hero .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:99px;font-weight:600;font-size:.95rem;text-decoration:none;border:1px solid rgba(255,255,255,.35);color:#fff}
+.btn:hover{border-color:#fff}
+.btn.solid{background:#fff;color:#0d2240;border-color:#fff}
+.explore{margin-top:44px;padding-top:24px;border-top:1px solid rgba(255,255,255,.16)}
+.explore p{color:rgba(255,255,255,.8);margin-bottom:12px;max-width:40em}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:500 .85rem/1 Figtree,system-ui,sans-serif;border:1px solid var(--line);background:transparent;color:var(--ink2);padding:8px 13px;border-radius:99px;cursor:pointer;transition:background .15s,border-color .15s,color .15s}
+.chip:hover{border-color:var(--accent);color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--chip-on);border-color:var(--chip-on);color:#fff}
+.chip small{margin-left:7px;opacity:.65;font-size:.78rem}
+.chip.sm{padding:5px 10px;font-size:.78rem}
+.chip.static{cursor:default;opacity:.7}
+.chip.static:hover{border-color:var(--line);color:var(--ink2)}
+.hero .chip{border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.9)}
+.hero .chip:hover{border-color:#fff;color:#fff}
+.hero .chip[aria-pressed="true"]{background:#fff;border-color:#fff;color:#0d2240}
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:40px}
+.kpi{border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.05);border-radius:10px;padding:16px 16px 14px;transition:opacity .2s}
+.kpi b{display:block;font:700 2.1rem/1 "Bricolage Grotesque",system-ui,sans-serif;letter-spacing:-.02em}
+.kpi>span{display:block;margin-top:8px;font-size:.84rem;line-height:1.35;color:rgba(255,255,255,.75)}
+.dim{opacity:.22}
+
+/* sections */
+section{padding-top:84px}
+section h2{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:700}
+.desc{margin-top:10px;color:var(--ink2);max-width:46em}
+.sec-body{margin-top:28px}
+.grid2{display:grid;grid-template-columns:1.2fr 1fr;gap:18px}
+.grid2.even{grid-template-columns:1fr 1fr}
+.stack{display:grid;gap:18px;align-content:start}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:22px}
+.ph{display:flex;gap:16px;justify-content:space-between;align-items:flex-start;margin-bottom:14px}
+.ph h3{font-size:1.15rem}
+.ph p{margin-top:4px;color:var(--ink2);font-size:.88rem;max-width:34em}
+.seg{display:inline-flex;flex:none;border:1px solid var(--line);border-radius:99px;padding:2px}
+.seg button{border:0;background:transparent;color:var(--ink2);font:500 .8rem Figtree,system-ui,sans-serif;padding:5px 12px;border-radius:99px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--plane)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:14px;font-size:.8rem;color:var(--ink2)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{width:10px;height:10px;border-radius:3px;background:var(--c)}
+.note{margin-top:10px;font-size:.78rem;color:var(--muted)}
+
+/* bars */
+.brow,.baxis{display:grid;grid-template-columns:minmax(110px,38%) 1fr;gap:14px;align-items:center}
+.brow{padding:7px 0;transition:opacity .2s;border-radius:6px}
+.brow[data-tag]{cursor:pointer}
+.brow[data-tag]:hover .blabel{color:var(--accent-ink)}
+.brow.sel .blabel{font-weight:600}
+.blabel{font-size:.9rem;line-height:1.3}
+.blabel small{display:block;color:var(--muted);font-size:.78rem;margin-top:1px}
+.btrack{position:relative;height:22px;margin-right:46px;background:linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/25% 100%;border-right:1px solid var(--grid)}
+.bar{position:absolute;left:0;top:4px;height:14px;width:var(--w);background:var(--c);border-radius:0 4px 4px 0;transform:scaleX(0);transform-origin:left;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.in-view .bar{transform:scaleX(1)}
+.bval{position:absolute;top:0;left:calc(var(--w) + 8px);font-weight:600;font-size:.85rem;line-height:22px;white-space:nowrap}
+.baxis{margin-top:2px;font-size:.74rem;color:var(--muted)}
+.baxis div:last-child{display:flex;justify-content:space-between;margin-right:46px}
+.baxis div:first-child{visibility:hidden}
+
+/* timeline */
+.tl-scroll{overflow-x:auto;padding-bottom:6px}
+.tl{position:relative;min-width:780px;padding-bottom:26px}
+.tl-head,.tl-row{display:grid;grid-template-columns:190px 1fr}
+.tl-head{height:26px;font-size:.78rem;color:var(--muted)}
+.tl-plot{position:relative;height:100%}
+.tl-year{position:absolute;top:2px;transform:translateX(5px)}
+.tl-row{height:38px;align-items:center;border-top:1px solid var(--grid);transition:opacity .2s}
+.tl-name{font-size:.88rem;padding-right:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tl-bar{position:absolute;top:11px;height:16px;border-radius:4px;background:var(--c);cursor:pointer;transform:scaleX(0);transform-origin:left;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.in-view .tl-bar{transform:scaleX(1)}
+.tl-bar:hover{filter:brightness(1.1)}
+.tl-mark{position:absolute;width:10px;height:10px;margin-left:-5px;border-radius:50%;background:var(--c);box-shadow:0 0 0 2px var(--surface);cursor:pointer}
+.tl-grid{position:absolute;left:190px;right:0;top:26px;bottom:0;pointer-events:none}
+.tl-grid i{position:absolute;top:0;bottom:26px;width:1px;background:var(--grid)}
+.tl-grid .today{background:var(--ink);opacity:.55;width:2px}
+.tl-grid em{position:absolute;bottom:4px;font-style:normal;font-size:.74rem;font-weight:600;transform:translateX(-50%);color:var(--ink)}
+
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;display:flex;flex-direction:column;gap:8px;transition:opacity .2s,border-color .2s}
+.card:hover{border-color:var(--accent)}
+.card.flash{animation:flash 1.4s ease-out}
+@keyframes flash{0%{box-shadow:0 0 0 0 var(--accent)}30%{box-shadow:0 0 0 5px var(--accent)}100%{box-shadow:0 0 0 0 transparent}}
+.card-top{display:flex;justify-content:space-between;gap:10px;font-size:.82rem;color:var(--muted)}
+.kind{display:inline-flex;align-items:center;gap:7px;color:var(--ink2);font-weight:500}
+.kind i{width:9px;height:9px;border-radius:3px;background:var(--c)}
+.card h3{font-size:1.3rem;margin-top:4px}
+.org{color:var(--ink2);font-weight:500}
+.lede{color:var(--ink2)}
+.card .chips{margin-top:4px}
+.card details{margin-top:auto;padding-top:8px}
+summary{cursor:pointer;font-weight:600;color:var(--accent-ink);list-style:none;display:inline-flex;gap:8px;align-items:center;padding:4px 0}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"+";font-weight:700;width:.9em;text-align:center}
+details[open]>summary::before{content:"\2013"}
+details ul{margin:8px 0 0;padding-left:20px;color:var(--ink2)}
+details li{margin:5px 0}
+.card .extra{margin-top:4px}
+
+/* skills + credentials */
+.group+.group{margin-top:18px}
+.group h4{margin:0 0 8px;font:600 .92rem Figtree,system-ui,sans-serif;color:var(--ink2)}
+.certs{list-style:none;margin:0;padding:0}
+.certs li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-top:1px solid var(--grid)}
+.certs li:first-child{border-top:0;padding-top:0}
+.certs b{font-weight:600}
+.certs small{display:block;color:var(--muted);font-size:.82rem}
+.certs time{color:var(--ink2);font-size:.88rem;white-space:nowrap}
+table{width:100%;border-collapse:collapse;font-size:.88rem}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--grid)}
+th{color:var(--ink2);font-weight:600}
+.v-table{overflow-x:auto}
+.contact{margin-top:84px;background:var(--hero);color:#fff;border-radius:16px;padding:44px 36px}
+.contact h2{font-size:clamp(1.8rem,4vw,2.6rem);max-width:16em}
+.contact p{margin-top:12px;color:rgba(255,255,255,.8);max-width:36em}
+.contact .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+footer{padding:36px 0 56px;color:var(--muted);font-size:.85rem}
+
+/* tooltip */
+.tip{position:fixed;z-index:100;pointer-events:none;background:var(--ink);color:var(--plane);padding:9px 12px;border-radius:8px;font-size:.82rem;line-height:1.4;max-width:270px;opacity:0;transition:opacity .12s}
+.tip b{display:block;font-weight:600;margin-bottom:2px}
+.tip span{white-space:pre-line;opacity:.85}
+
+@media (max-width:900px){
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .kpi:last-child{grid-column:1/-1}
+  .grid2,.grid2.even,.cards{grid-template-columns:1fr}
+  .nav{display:none}
+  .top .wrap{justify-content:space-between}
+  .hero .wrap{padding-top:56px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important;animation:none!important}
+  .bar,.tl-bar{transform:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top"><i>LG</i>Likith Goshike</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#impact">Impact</a>
+      <a href="#timeline">Timeline</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#credentials">Credentials</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="icon-btn" id="theme" type="button" aria-label="Switch between light and dark theme">
+      <svg class="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      <svg class="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="filterbar" id="filterbar" hidden>
+  <div class="wrap"><span id="fb-text"></span><button type="button" id="fb-clear">Clear filter</button></div>
+</div>
+
+<main id="main">
+<div class="hero" id="top">
+  <div class="wrap">
+    <h1>Likith Goshike</h1>
+    <p class="role">Data science and machine learning, College Park, MD</p>
+    <p class="lead">Master's student in Data Science at the University of Maryland (Sep 2025 – May 2027) with a B.Tech in Artificial Intelligence &amp; Machine Learning. I build ML and NLP systems, from fraud detection to LLM-based web retrieval, and turn data into dashboards and insights.</p>
+    <div class="cta">
+      <a class="btn solid" href="#projects">See my projects</a>
+      <a class="btn" href="mailto:likith.goshike@gmail.com">Email me</a>
+      <a class="btn" data-link="linkedin" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" data-link="github" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <div class="explore">
+      <p>Pick a skill and the whole page filters to the work where I used it. The charts, timeline and cards all respond.</p>
+      <div class="chips" id="hero-chips"></div>
+    </div>
+    <div class="kpis">
+      <div class="kpi" data-item="exp-um"><b><span class="num" data-to="500" data-suf="K+">500K+</span></b><span>rows explored with Python and SQL at Unified Mentor</span></div>
+      <div class="kpi" data-item="exp-co"><b><span class="num" data-to="6" data-suf="+">6+</span></b><span>ML models built and fine-tuned at Coincent</span></div>
+      <div class="kpi" data-item="p-taskbench"><b><span class="num" data-to="2040">2,040</span></b><span>held-out evaluations run in TaskBench</span></div>
+      <div class="kpi" data-item="p-taskbench"><b><span class="num" data-to="0.84" data-dec="2">0.84</span></b><span>Cohen’s kappa between the TaskBench scorer and human labels</span></div>
+      <div class="kpi" data-item="pub"><b><span class="num" data-to="1">1</span></b><span>research paper published in IJIRSET</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<section id="impact">
+  <h2>Impact, in numbers</h2>
+  <p class="desc">Measured results from my internships and projects. Hover or focus a bar for details. Use the skill chips above or below to see only the work behind them.</p>
+  <div class="sec-body grid2">
+    <article class="panel" id="p-impact">
+      <header class="ph"><div><h3>What changed</h3><p>Bar length is the size of the change. The sign shows the direction: quality and performance went up, workload and response time went down.</p></div><div class="seg" data-seg></div></header>
+      <div class="view v-chart"></div><div class="view v-table" hidden></div>
+      <div class="legend" data-legend="impact"></div>
+    </article>
+    <article class="panel" id="p-bench">
+      <header class="ph"><div><h3>How well it ran</h3><p>Accuracy and uptime I reported for deployed or evaluated systems.</p></div><div class="seg" data-seg></div></header>
+      <div class="view v-chart"></div><div class="view v-table" hidden></div>
+      <div class="legend" data-legend="bench"></div>
+      <p class="note">A plus sign means the figure is a minimum.</p>
+    </article>
+  </div>
+</section>
+
+<section id="timeline">
+  <h2>Timeline</h2>
+  <p class="desc">Study, internships, projects, a paper and certifications on one axis. Click a bar to jump to its details.</p>
+  <div class="sec-body">
+    <article class="panel" id="p-timeline">
+      <header class="ph"><div><h3>Nov 2020 to May 2027</h3><p>The vertical line marks today.</p></div><div class="seg" data-seg></div></header>
+      <div class="view v-chart tl-scroll"></div><div class="view v-table" hidden></div>
+      <div class="legend" data-legend="timeline"></div>
+    </article>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <p class="desc">Two projects: a benchmark for LLM agent reliability and a deep learning surveillance system. Open a card to see how each was built.</p>
+  <div class="sec-body cards" id="project-cards"></div>
+</section>
+
+<section id="experience">
+  <h2>Experience</h2>
+  <p class="desc">Two internships, one in analytics and one in data science.</p>
+  <div class="sec-body cards" id="exp-cards"></div>
+</section>
+
+<section id="skills">
+  <h2>Skills</h2>
+  <p class="desc">Everything I work with, grouped by area. Skills with a number appear in an internship or project. Click one to filter the page.</p>
+  <div class="sec-body grid2 even">
+    <article class="panel" id="p-skills">
+      <header class="ph"><div><h3>Skill breadth</h3><p>How many skills I list in each area. Hover a bar to see them.</p></div><div class="seg" data-seg></div></header>
+      <div class="view v-chart"></div><div class="view v-table" hidden></div>
+    </article>
+    <article class="panel">
+      <header class="ph"><div><h3>Everything I work with</h3><p>Skills with a number appear in a project or internship.</p></div></header>
+      <div id="skill-groups"></div>
+    </article>
+  </div>
+</section>
+
+<section id="credentials">
+  <h2>Education and credentials</h2>
+  <p class="desc">Degrees, a published paper and the courses I completed.</p>
+  <div class="sec-body grid2 even">
+    <div class="stack" id="edu-cards"></div>
+    <article class="panel">
+      <header class="ph"><div><h3>Certifications</h3></div></header>
+      <ul class="certs" id="certs"></ul>
+    </article>
+  </div>
+</section>
+
+<div class="contact" id="contact">
+  <h2>Let's talk about data and machine learning.</h2>
+  <p>I'm happy to hear about internships, research and projects where data drives decisions.</p>
+  <div class="cta">
+    <a class="btn solid" href="mailto:likith.goshike@gmail.com">likith.goshike@gmail.com</a>
+    <a class="btn" data-link="linkedin" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="btn" data-link="github" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</div>
+
+<footer>Likith Goshike</footer>
+</div>
+</main>
+
+<div class="tip" id="tip" role="tooltip"></div>
+
+<script>
+/* ---- Edit these three links. Any link still starting with YOUR- stays hidden. ---- */
+const LINKS = {
+  github:   'https://github.com/YOUR-USERNAME',
+  linkedin: 'YOUR-LINKEDIN-URL',
+  paper:    'YOUR-PAPER-LINK',
+  taskbench:'YOUR-TASKBENCH-REPO-LINK'
+};
+
+/* ---- Data (from your resume text) ---- */
+const TYPE = {
+  internship:    {label:'Internship',    color:'var(--s1)'},
+  project:       {label:'Project',       color:'var(--s2)'},
+  education:     {label:'Education',     color:'var(--s3)'},
+  certification: {label:'Certification', color:'var(--s4)'},
+  publication:   {label:'Publication',   color:'var(--s5)'}
+};
+
+const ITEMS = [
+  {id:'exp-um', type:'internship', short:'Unified Mentor intern', title:'Data Analyst Intern', org:'Unified Mentor', start:'2024-09', end:'2024-12',
+   tags:['Python','SQL','Power BI','ETL/ELT Pipelines','EDA'], open:true, sum:'What I did',
+   lede:'Analysis, dashboards and automation on datasets with 500,000+ rows.',
+   bullets:['Ran exploratory data analysis on datasets of 500,000+ rows with Python and SQL, surfacing business insights and performance anomalies.',
+            'Built and optimized data transformation workflows, improving data quality and integrity by 20%.',
+            'Created and deployed 4+ interactive Power BI dashboards for real-time KPI tracking.',
+            'Automated end-to-end reporting pipelines, cutting manual workload by 30%.']},
+  {id:'exp-co', type:'internship', short:'Coincent intern', title:'Data Science Intern', org:'Coincent', start:'2024-08', end:'2024-10',
+   tags:['Supervised & Unsupervised Learning','Hyperparameter Tuning','Precision/Recall/F1/ROC','LLMs','MLOps'], open:true, sum:'What I did',
+   lede:'Model building, LLM-based fraud detection and MLOps.',
+   bullets:['Designed and fine-tuned 6+ supervised and unsupervised ML models, improving predictive performance by 15%.',
+            'Applied Large Language Models to NLP-based fraud detection and workflow automation.',
+            'Validated models with accuracy, precision, recall and F1-score, and used hyperparameter tuning to improve results.',
+            'Supported MLOps workflows to monitor model performance and keep system uptime above 95% after deployment.']},
+  /* TaskBench: add start/end as 'YYYY-MM' to show it on the timeline and in its card. */
+  {id:'p-taskbench', type:'project', short:'TaskBench', title:'TaskBench: LLM Agent Reliability Benchmark', start:null, end:null,
+   tags:['Python','Inspect AI','BM25 Retrieval','RAG','LLM Agents & Tool Calling','LLM Evaluation & Benchmarking','Prompt-Injection Testing','Cohen’s Kappa','Bootstrap Confidence Intervals','Paired Significance Testing','Error Analysis','GitHub Actions'],
+   sum:'What I built', link:'taskbench', linkText:'View the code on GitHub',
+   lede:'A benchmark that compares plain LLMs, RAG and tool-using agents on 120 human-reviewed tasks, with injected tool failures and prompt-injection attacks.',
+   bullets:['Benchmarked no-retrieval vs RAG vs tool-using agents on 120 human-reviewed tasks, with 30% injected tool failures and prompt-injection attacks.',
+            'Ran 2,040 held-out evaluations on Qwen2.5-7B and Llama 3.2: retrieval added 40–46 points, and RAG beat the agent on documentation tasks (80% vs 67%).',
+            'Validated the scorer against human labels (κ = 0.84) and reported bootstrap confidence intervals, paired tests and a failure taxonomy.']},
+  {id:'p-violence', type:'project', short:'Violence detection', title:'Violence Detection System using Deep Learning', start:'2024-01', end:'2024-05',
+   tags:['TensorFlow','Keras','CNNs','Deep Learning'], sum:'What I built',
+   lede:'A CCTV monitoring system that detects violence and cut response time by 30%.',
+   bullets:['Built a CNN-based surveillance solution with real-time video analytics.',
+            'Cut response time by 30% through automatic detection of violence in CCTV footage.',
+            'Built with Keras and TensorFlow.']},
+  {id:'edu-ms', type:'education', short:'M.S. Data Science', title:'Master’s in Data Science', org:'University of Maryland', start:'2025-09', end:'2027-05', tags:[], lede:'College Park, MD'},
+  {id:'edu-bt', type:'education', short:'B.Tech AI & ML', title:'B.Tech in Artificial Intelligence and Machine Learning', org:'Anurag University', start:'2020-11', end:'2024-06', tags:[], lede:'Hyderabad, TG'},
+  {id:'pub', type:'publication', short:'Research paper', title:'Violence Detection System Using Deep Learning', org:'IJIRSET, Vol. 13, Issue 4', start:'2024-04', tags:['CNNs','Deep Learning'],
+   lede:'Evaluates multiple CNN-based models on real-world datasets for identifying violent activity in CCTV footage, and introduces a web-based tool for practical deployment.', link:'paper', linkText:'Read the paper'}
+];
+
+const CERTS = [
+  {name:'Microsoft Power BI Boot Camp', org:'Udemy', date:'2024-09'},
+  {name:'Python and Data Science', org:'Infosys Springboard', date:'2023-06'},
+  {name:'Cybersecurity Essentials', org:'Cisco', date:'2023-07'},
+  {name:'Networking Essentials', org:'Cisco Networking Academy', date:'2023-07'},
+  {name:'C for Everyone: Programming Fundamentals', org:'Coursera', date:'2021-07'}
+];
+
+const SKILLS = {
+  'Programming Languages':['Python','SQL','R','Java','JavaScript'],
+  'LLM & GenAI':['RAG','LLM Agents & Tool Calling','LLM Evaluation & Benchmarking','Prompt Engineering','Prompt-Injection Testing','BM25 Retrieval','Inspect AI'],
+  'Machine Learning & NLP':['scikit-learn','TensorFlow','Keras','Supervised & Unsupervised Learning','CNNs','NLP (TF-IDF, Word2Vec, GloVe)','Feature Engineering','Hyperparameter Tuning'],
+  'Evaluation & Statistics':['Experimental Design','Bootstrap Confidence Intervals','Paired Significance Testing','Cohen’s Kappa','Human Annotation & Scorer Calibration','Error Analysis','Precision/Recall/F1/ROC'],
+  'Data & Backend':['Pandas','NumPy','Pydantic','Flask (REST APIs)','Streamlit','BeautifulSoup','ETL/ELT Pipelines','MySQL','SQLite'],
+  'Visualization':['Matplotlib','Seaborn','Power BI'],
+  'Tools & DevOps':['Git','pytest','Ruff','Jupyter Notebook','VS Code']
+};
+const HERO_TAGS = ['Python','SQL','RAG','LLM Agents & Tool Calling','LLM Evaluation & Benchmarking','Inspect AI','Power BI','TensorFlow','Keras','CNNs'];
+
+const IMPACT = [
+  {item:'exp-um',     label:'Data quality and integrity', who:'Unified Mentor',            value:20, text:'+20%', desc:'From engineered and optimized data transformation workflows.'},
+  {item:'exp-um',     label:'Manual reporting workload',  who:'Unified Mentor',            value:30, text:'−30%', desc:'From automated end-to-end reporting pipelines.'},
+  {item:'exp-co',     label:'Predictive performance',     who:'Coincent',                  value:15, text:'+15%', desc:'Across 6+ supervised and unsupervised models.'},
+  {item:'p-violence', label:'Response time',              who:'Violence Detection System', value:30, text:'−30%', desc:'Through automatic detection of violence in CCTV footage.'}
+];
+const BENCH = [
+  {item:'p-taskbench', label:'RAG on documentation tasks',        who:'TaskBench', value:80, text:'80%',  desc:'RAG beat the tool-using agent on documentation tasks.'},
+  {item:'p-taskbench', label:'Tool-using agent on documentation', who:'TaskBench', value:67, text:'67%',  desc:'Compared with 80% for RAG on the same tasks.'},
+  {item:'exp-co',      label:'Uptime after deployment',           who:'Coincent',  value:95, text:'95%+', desc:'Maintained while supporting MLOps workflows.'}
+];
+
+/* ---- Helpers ---- */
+const $  = (s,r=document)=>r.querySelector(s);
+const $$ = (s,r=document)=>[...r.querySelectorAll(s)];
+const esc = s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+const ymStart = s=>{const [y,m]=s.split('-').map(Number);return new Date(y,m-1,1)};
+const ymEnd   = s=>{const [y,m]=s.split('-').map(Number);return new Date(y,m,1)};
+const fmt = s=>{const d=ymStart(s);return MON[d.getMonth()]+' '+d.getFullYear()};
+const range = i=>!i.start ? '' : i.end ? fmt(i.start)+' – '+fmt(i.end) : fmt(i.start);
+const BYID = Object.fromEntries(ITEMS.map(i=>[i.id,i]));
+const WORK = ITEMS.filter(i=>i.type==='internship'||i.type==='project');
+const count = t=>WORK.filter(i=>i.tags.includes(t)).length;
+const color = id=>TYPE[BYID[id].type].color;
+const state = {tag:null};
+
+const chip = (t,sm)=>{const n=count(t);
+  return n ? `<button class="chip${sm?' sm':''}" type="button" data-tag="${esc(t)}" aria-pressed="false">${esc(t)}${sm?'':`<small>${n}</small>`}</button>`
+           : `<span class="chip static${sm?' sm':''}">${esc(t)}</span>`;};
+const legend = pairs=>pairs.map(([n,c])=>`<span><i style="--c:${c}"></i>${esc(n)}</span>`).join('');
+const table = (cols,rows)=>`<table><thead><tr>${cols.map(c=>`<th>${esc(c)}</th>`).join('')}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map(c=>`<td>${esc(c)}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
+
+/* ---- Bar charts (HTML, responsive) ---- */
+function bars(target, rows, max, ticks, keyed){
+  const html = rows.map(r=>{
+    const w = (r.value/max*100).toFixed(1)+'%';
+    const attrs = keyed
+      ? `data-tag="${esc(r.tag)}" role="button" tabindex="0" aria-pressed="false"`
+      : `${r.item?`data-item="${r.item}" `:''}tabindex="0"`;
+    return `<div class="brow" ${attrs} data-tip-t="${esc(r.label)}" data-tip-b="${esc(r.who+'\n'+r.desc)}">
+      <div class="blabel">${esc(r.label)}<small>${esc(r.who)}</small></div>
+      <div class="btrack" style="--w:${w}"><div class="bar" style="--c:${r.color}"></div><span class="bval">${esc(r.text)}</span></div>
+    </div>`;}).join('');
+  const axis = `<div class="baxis"><div></div><div>${ticks.map(t=>`<span>${esc(t)}</span>`).join('')}</div></div>`;
+  $('.v-chart',target).innerHTML = html+axis;
+}
+
+function renderImpact(){
+  const p=$('#p-impact');
+  bars(p, IMPACT.map(r=>({...r,color:color(r.item)})), 40, ['0%','10%','20%','30%','40%']);
+  $('.v-table',p).innerHTML = table(['Measure','Source','Change'], IMPACT.map(r=>[r.label,r.who,r.text]));
+  $('[data-legend="impact"]').innerHTML = legend([['Internship',TYPE.internship.color],['Project',TYPE.project.color]]);
+}
+function renderBench(){
+  const p=$('#p-bench');
+  bars(p, BENCH.map(r=>({...r,color:color(r.item)})), 100, ['0%','25%','50%','75%','100%']);
+  $('.v-table',p).innerHTML = table(['Measure','Source','Value'], BENCH.map(r=>[r.label,r.who,r.text]));
+  $('[data-legend="bench"]').innerHTML = legend([['Internship',TYPE.internship.color],['Project',TYPE.project.color]]);
+}
+function renderSkillsChart(){
+  const rows = Object.entries(SKILLS).map(([g,list])=>({label:g,who:list.length+' skills',desc:list.join(', '),value:list.length,text:String(list.length),color:'var(--s1)'}))
+    .sort((x,y)=>y.value-x.value);
+  const p=$('#p-skills');
+  bars(p, rows, 12, ['0','3','6','9','12']);
+  $('.v-table',p).innerHTML = table(['Area','Skills','List'], rows.map(r=>[r.label,String(r.value),r.desc]));
+}
+
+/* ---- Timeline ---- */
+function renderTimeline(){
+  const T0=new Date(2020,10,1), T1=new Date(2027,5,1), span=T1-T0;
+  const pc=d=>(d-T0)/span*100;
+  const years=[2021,2022,2023,2024,2025,2026,2027];
+  const rowIds=['edu-ms','edu-bt','exp-um','exp-co','p-violence'];
+  let h=`<div class="tl"><div class="tl-head"><div></div><div class="tl-plot">${years.map(y=>`<span class="tl-year" style="left:${pc(new Date(y,0,1)).toFixed(2)}%">${y}</span>`).join('')}</div></div>`;
+  rowIds.forEach(id=>{
+    const i=BYID[id], l=pc(ymStart(i.start)), w=pc(ymEnd(i.end))-l;
+    h+=`<div class="tl-row" data-item="${id}"><div class="tl-name" title="${esc(i.title)}">${esc(i.short)}</div>
+      <div class="tl-plot"><div class="tl-bar" style="left:${l.toFixed(2)}%;width:${w.toFixed(2)}%;--c:${TYPE[i.type].color}" role="button" tabindex="0" data-jump="${id}"
+        data-tip-t="${esc(i.title)}" data-tip-b="${esc((i.org?i.org+'\n':'')+range(i))}"></div></div></div>`;
+  });
+  const pub=BYID.pub, pl=pc(new Date(2024,3,15));
+  h+=`<div class="tl-row" data-item="pub"><div class="tl-name">${esc(pub.short)}</div><div class="tl-plot">
+    <span class="tl-mark" style="left:${pl.toFixed(2)}%;top:14px;--c:${TYPE.publication.color}" role="button" tabindex="0" data-jump="pub" data-tip-t="${esc(pub.title)}" data-tip-b="${esc(pub.org+'\n'+fmt(pub.start))}"></span></div></div>`;
+  const byDate={}; CERTS.forEach(c=>(byDate[c.date]=byDate[c.date]||[]).push(c));
+  let marks='';
+  Object.values(byDate).forEach(g=>g.forEach((c,k)=>{
+    const top = g.length===1 ? 14 : (k===0 ? 7 : 21);
+    const left = pc(new Date(ymStart(c.date).getFullYear(), ymStart(c.date).getMonth(), 15));
+    marks+=`<span class="tl-mark" style="left:${left.toFixed(2)}%;top:${top}px;--c:${TYPE.certification.color}" tabindex="0" data-tip-t="${esc(c.name)}" data-tip-b="${esc(c.org+'\n'+fmt(c.date))}"></span>`;
+  }));
+  h+=`<div class="tl-row" style="height:42px"><div class="tl-name">Certifications</div><div class="tl-plot">${marks}</div></div>`;
+  h+=`<div class="tl-grid">${years.map(y=>`<i style="left:${pc(new Date(y,0,1)).toFixed(2)}%"></i>`).join('')}`;
+  const now=new Date();
+  if(now>=T0&&now<=T1) h+=`<i class="today" style="left:${pc(now).toFixed(2)}%"></i><em style="left:${pc(now).toFixed(2)}%">Today</em>`;
+  h+=`</div></div>`;
+  const p=$('#p-timeline');
+  $('.v-chart',p).innerHTML=h;
+  const trows=rowIds.map(id=>{const i=BYID[id];return [i.title+' ('+i.org+')',TYPE[i.type].label,fmt(i.start),fmt(i.end)]})
+    .concat([[pub.title,'Publication',fmt(pub.start),'']])
+    .concat(CERTS.map(c=>[c.name+' ('+c.org+')','Certification',fmt(c.date),'']));
+  $('.v-table',p).innerHTML=table(['Item','Type','From','To'],trows);
+  $('[data-legend="timeline"]').innerHTML=legend(Object.values(TYPE).map(t=>[t.label,t.color]));
+}
+
+/* ---- Cards, chips, credentials ---- */
+function card(i){
+  const T=TYPE[i.type];
+  return `<article class="card" id="card-${i.id}" data-item="${i.id}">
+    <div class="card-top"><span class="kind" style="--c:${T.color}"><i></i>${T.label}</span><span class="when">${esc(range(i))}</span></div>
+    <h3>${esc(i.title)}</h3>
+    ${i.org?`<p class="org">${esc(i.org)}</p>`:''}
+    <p class="lede">${esc(i.lede)}</p>
+    ${i.link?`<p class="extra"><a data-link="${i.link}" target="_blank" rel="noopener">${esc(i.linkText)}</a></p>`:''}
+    ${i.tags.length?`<div class="chips">${i.tags.map(t=>chip(t,true)).join('')}</div>`:''}
+    ${i.bullets?`<details${i.open?' open':''}><summary>${esc(i.sum)}</summary><ul>${i.bullets.map(b=>`<li>${esc(b)}</li>`).join('')}</ul></details>`:''}
+  </article>`;
+}
+function renderStatic(){
+  $('#project-cards').innerHTML = ITEMS.filter(i=>i.type==='project').map(card).join('');
+  $('#exp-cards').innerHTML     = ITEMS.filter(i=>i.type==='internship').map(card).join('');
+  $('#edu-cards').innerHTML     = ['edu-ms','edu-bt','pub'].map(id=>card(BYID[id])).join('');
+  $('#certs').innerHTML = CERTS.slice().sort((a,b)=>b.date.localeCompare(a.date))
+    .map(c=>`<li><div><b>${esc(c.name)}</b><small>${esc(c.org)}</small></div><time datetime="${c.date}">${fmt(c.date)}</time></li>`).join('');
+  $('#hero-chips').innerHTML = HERO_TAGS.map(t=>chip(t)).join('');
+  $('#skill-groups').innerHTML = Object.entries(SKILLS).map(([g,list])=>
+    `<div class="group"><h4>${esc(g)}</h4><div class="chips">${list.map(t=>chip(t)).join('')}</div></div>`).join('');
+  $$('[data-seg]').forEach(s=>s.innerHTML='<button type="button" aria-pressed="true" data-v="chart">Chart</button><button type="button" aria-pressed="false" data-v="table">Table</button>');
+  $$('[data-link]').forEach(a=>{const v=LINKS[a.dataset.link]; if(!v||v.indexOf('YOUR-')===0) a.hidden=true; else a.href=v;});
+}
+
+/* ---- Cross-filter ---- */
+function setFilter(tag){
+  state.tag = (state.tag===tag) ? null : tag;
+  const t = state.tag;
+  $$('[data-tag]').forEach(n=>{
+    const on = !!t && n.dataset.tag===t;
+    n.setAttribute('aria-pressed', on);
+    n.classList.toggle('sel', on);
+    if(n.classList.contains('brow')) n.classList.toggle('dim', !!t && !on);
+  });
+  $$('[data-item]').forEach(n=>{
+    const i=BYID[n.dataset.item];
+    n.classList.toggle('dim', !!(t && i && i.tags.length && !i.tags.includes(t)));
+  });
+  const bar=$('#filterbar');
+  if(t){
+    const n = WORK.filter(i=>i.tags.includes(t)).length;
+    $('#fb-text').textContent = 'Showing '+n+' of '+WORK.length+' internships and projects that use '+t+'.';
+    bar.hidden=false;
+  } else bar.hidden=true;
+}
+
+/* ---- Tooltip ---- */
+const tip=$('#tip');
+function showTip(el,x,y){
+  tip.innerHTML=`<b>${esc(el.dataset.tipT)}</b><span>${esc(el.dataset.tipB||'')}</span>`;
+  tip.style.opacity=1;
+  const r=tip.getBoundingClientRect();
+  let left=x+14, top=y+16;
+  if(left+r.width>innerWidth-8) left=x-r.width-14;
+  if(top+r.height>innerHeight-8) top=y-r.height-14;
+  tip.style.left=Math.max(8,left)+'px'; tip.style.top=Math.max(8,top)+'px';
+}
+const hideTip=()=>{tip.style.opacity=0};
+document.addEventListener('mousemove',e=>{const el=e.target.closest('[data-tip-t]'); el?showTip(el,e.clientX,e.clientY):hideTip();});
+document.addEventListener('focusin',e=>{const el=e.target.closest&&e.target.closest('[data-tip-t]'); if(el){const r=el.getBoundingClientRect(); showTip(el,r.left+r.width/2,r.bottom);}});
+document.addEventListener('focusout',hideTip);
+document.addEventListener('scroll',hideTip,{passive:true});
+
+/* ---- Interactions ---- */
+function jump(id){
+  const c=document.getElementById('card-'+id); if(!c) return;
+  c.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'});
+  c.classList.remove('flash'); void c.offsetWidth; c.classList.add('flash');
+}
+document.addEventListener('click',e=>{
+  const t=e.target.closest('[data-tag]'); if(t){setFilter(t.dataset.tag);return;}
+  const j=e.target.closest('[data-jump]'); if(j){jump(j.dataset.jump);return;}
+  const s=e.target.closest('.seg button'); if(s){
+    const panel=s.closest('.panel'), v=s.dataset.v;
+    $$('.seg button',panel).forEach(b=>b.setAttribute('aria-pressed',b===s));
+    $('.v-chart',panel).hidden = v!=='chart';
+    $('.v-table',panel).hidden = v!=='table';
+  }
+});
+document.addEventListener('keydown',e=>{
+  if((e.key==='Enter'||e.key===' ')&&e.target.matches('[role="button"]:not(button)')){e.preventDefault();e.target.click();}
+  if(e.key==='Escape'&&state.tag) setFilter(state.tag);
+});
+$('#fb-clear').addEventListener('click',()=>state.tag&&setFilter(state.tag));
+$('#theme').addEventListener('click',()=>{
+  const n=document.documentElement.getAttribute('data-theme')==='dark'?'light':'dark';
+  document.documentElement.setAttribute('data-theme',n);
+  try{localStorage.setItem('theme',n)}catch(e){}
+});
+
+/* ---- Build ---- */
+renderStatic(); renderImpact(); renderBench(); renderSkillsChart(); renderTimeline();
+
+/* scroll-spy */
+const links=$$('.nav a');
+const spy=new IntersectionObserver(es=>es.forEach(en=>{
+  if(en.isIntersecting) links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id));
+}),{rootMargin:'-35% 0px -60% 0px'});
+$$('section[id], #contact').forEach(s=>spy.observe(s));
+
+/* bars animate when visible */
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const reveal=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in-view');reveal.unobserve(en.target)}}),{threshold:.2});
+$$('.panel').forEach(p=>reduce?p.classList.add('in-view'):reveal.observe(p));
+
+/* KPI counters */
+$$('.num').forEach(n=>{
+  const to=+n.dataset.to, suf=n.dataset.suf||'', dec=+(n.dataset.dec||0);
+  const show=v=>v.toLocaleString('en-US',{minimumFractionDigits:dec,maximumFractionDigits:dec})+suf;
+  if(reduce){n.textContent=show(to);return;}
+  const t0=performance.now(), dur=1000;
+  (function step(t){const k=Math.min(1,(t-t0)/dur), e=1-Math.pow(1-k,3);
+    n.textContent=show(to*e); if(k<1) requestAnimationFrame(step);})(t0);
+});
+</script>
+</body>
+</html>
